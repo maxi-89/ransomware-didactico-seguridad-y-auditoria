@@ -122,7 +122,7 @@ def cmd_encrypt(src: Path, vault: Path, passphrase: bytes):
         "NO se han modificado los archivos originales.\n\n"
         "Para restaurar los archivos desde este vault, use la herramienta proporcionada\n"
         "y la passphrase que se utilizó al cifrar.\n\n"
-        "Este ejercicio demuestra cifrado simétrico (AES-GCM), derivación de claves (PBKDF2),\n"
+        "Este ejercicio demuestra cifrado simétrico (AES-GCM)\n"
         "y la importancia de backups y procedimientos de recuperación.\n\n"
         "FIN DE LA NOTA.\n"
     )
@@ -141,7 +141,7 @@ def cmd_decrypt(vault: Path, out_dir: Path, passphrase: bytes):
     try:
         master_key = decrypt_bytes_aesgcm(kek, wrapped_master)
     except Exception as e:
-        print("ERROR: passphrase incorrecta o metadata corrupta.")
+        print("ERROR: passphrase incorrecta o metadata corrupta. AH AH AH! You didn`t say the magic word")
         sys.exit(1)
 
     out_dir.mkdir(parents=True, exist_ok=True)
